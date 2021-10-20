@@ -1,5 +1,6 @@
 package com.example.covidtrackingapp
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,13 +18,21 @@ class RiskListAdapter : ListAdapter<Risk, RiskListAdapter.RiskViewHolder>(RiskCo
     override fun onBindViewHolder(holder: RiskViewHolder, position: Int) {
         val currentRisk = getItem(position)
         holder.bindText(currentRisk.location, holder.riskTextView)
+
+        holder.itemView.setOnClickListener{
+            v:View -> Unit
+
+            val context = holder.riskTextView.context
+
+            val intent = Intent(context, FourthActivity::class.java)
+            intent.putExtra("id", currentRisk.id.toString())
+            context.startActivity(intent)
+        }
+
     }
 
     class RiskViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
         val riskTextView: TextView = itemView.findViewById(R.id.textView_riskId)
-
-        // write a helper function that takes a string and a text view
-        // assign the text to the text view
 
         fun bindText (text:String?, textview: TextView){
             textview.text = text
