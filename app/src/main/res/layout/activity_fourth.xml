@@ -25,19 +25,83 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editText_fourthState"
+            <TextView
+                android:id="@+id/textView_fourthLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:text="Location:"
+                android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/editText_fourthNumberPeople"
+            <TextView
+                android:id="@+id/textView_fourLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView_fourthState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="State/Country"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView_fourState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView_fourthNumberPeople"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Number of people with:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView_fourNumberPeople"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView_fourthDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Duration of activity:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView_fourDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView_fourthMasks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Masks worn?"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView_fourMasks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView_fourthVaccinated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Vaccinated?"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView_fourVaccinated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp" />
         </LinearLayout>
     </ScrollView>
 

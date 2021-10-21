@@ -19,7 +19,7 @@ interface RiskDAO {
     fun select(id:Int) : Flow<Risk>
 
     @Query("UPDATE risk_table SET location=:location, location_state=:location_state, number_people=:number_people, duration=:duration, masks=:masks, vaccinated=:vaccinated WHERE id=:id")
-    suspend fun update(id:Int, location:String, location_state:String, number_people:Int, duration:Int, masks:Boolean, vaccinated:String)
+    suspend fun update(id:Int, location:String, location_state:String, number_people:String, duration:String, masks:String, vaccinated:String)
 
 
 }

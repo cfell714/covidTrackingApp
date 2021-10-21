@@ -5,9 +5,8 @@ import android.text.TextUtils
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import java.sql.Date
 
-class ThirdActivity : AppCompatActivity() {
+class UpdateActivity : AppCompatActivity() {
 
     private lateinit var spinner: Spinner
     private lateinit var buttonSave: Button
@@ -24,7 +23,7 @@ class ThirdActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_third)
+        setContentView(R.layout.activity_main)
 
         spinner = findViewById(R.id.spinner)
         buttonSave = findViewById(R.id.button_save)
@@ -33,6 +32,22 @@ class ThirdActivity : AppCompatActivity() {
         editTextDuration = findViewById(R.id.editText_duration)
         checkBoxMasks = findViewById(R.id.checkBox_masks)
         editTextVaccinated = findViewById(R.id.editText_vaccinated)
+
+        val tempId = intent.getStringExtra("id")
+        val id = Integer.parseInt(tempId)
+
+        val tempLocation = intent.getStringExtra("location")
+        val tempState = intent.getStringExtra("state")
+        val tempNumberPeople = intent.getStringExtra("numberPeople")
+        val tempDuration = intent.getStringExtra("duration")
+        val tempMasks = intent.getStringExtra("masks")
+        val tempVaccinated = intent.getStringExtra("vaccinated")
+
+        editTextState.setText(tempState)
+        editTextNumberPeople.setText(tempNumberPeople)
+        editTextDuration.setText(tempDuration)
+        editTextVaccinated.setText(tempVaccinated)
+        spinner.setSelection(1)
 
         SearchSpinner()
 

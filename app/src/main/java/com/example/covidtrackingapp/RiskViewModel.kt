@@ -20,7 +20,7 @@ class RiskViewModel (private val repository: RiskRepository) : ViewModel() {
         return repository.select(id).asLiveData()
     }
 
-    fun update(id:Int, location:String, location_state:String, number_people:Int, duration:Int, masks:Boolean, vaccinated:String) = viewModelScope.launch{
+    fun update(id:Int, location:String, location_state:String, number_people:String, duration:String, masks:String, vaccinated:String) = viewModelScope.launch{
         repository.update(id, location, location_state, number_people, duration, masks, vaccinated)
     }
 

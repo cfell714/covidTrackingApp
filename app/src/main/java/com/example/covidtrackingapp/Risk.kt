@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 class Risk(@PrimaryKey(autoGenerate = true) val id:Int,
            @ColumnInfo(name="location") val location:String,
            @ColumnInfo(name="location_state") val location_state:String,
-           @ColumnInfo(name="number_people") val number_people:Int,
-           @ColumnInfo(name="duration") val duration:Int,
-           @ColumnInfo(name="masks") val masks:Boolean,
+           @ColumnInfo(name="number_people") val number_people:String,
+           @ColumnInfo(name="duration") val duration:String,
+           @ColumnInfo(name="masks") val masks:String,
            @ColumnInfo(name="vaccinated") val vaccinated:String)
