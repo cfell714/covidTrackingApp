@@ -1,5 +1,6 @@
 package com.example.covidtrackingapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.*
@@ -23,7 +24,7 @@ class UpdateActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_third)
 
         spinner = findViewById(R.id.spinner)
         buttonSave = findViewById(R.id.button_save)
@@ -60,10 +61,10 @@ class UpdateActivity : AppCompatActivity() {
                     if(checkBoxMasks.isChecked){
                         check_temp = true
                     }
-
-                    val risk_temp = Risk(0, spinner.selectedItem.toString(), editTextState.text.toString(), editTextNumberPeople.text.toString(), editTextDuration.text.toString(), check_temp.toString(), editTextVaccinated.text.toString())
-                    riskViewModel.insert(risk_temp)
-                    finish()
+                    riskViewModel.update(id, spinner.selectedItem.toString(), editTextState.text.toString(), editTextNumberPeople.text.toString(),
+                            editTextDuration.text.toString(), check_temp.toString(), editTextVaccinated.text.toString())
+                    val intent = Intent(this, SecondActivity::class.java)
+                    startActivity(intent)
 
                 }catch(e: Exception){
                     Toast.makeText(this, "Something is wrong", Toast.LENGTH_LONG).show()

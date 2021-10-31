@@ -77,4 +77,10 @@ dependencies {
 // activity version
     implementation "androidx.activity:activity-ktx:$activityVersion"
 
+
+   // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+  //  implementation "androidx.core:core-ktx:+"
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+
+
 }
