@@ -34,6 +34,9 @@ class FourthActivity : AppCompatActivity(){
     private lateinit var tempDuration: String
     private lateinit var tempMasks: String
     private lateinit var tempVaccinated: String
+    private lateinit var tempLocationRatio: String
+    private lateinit var tempCases: String
+    private lateinit var tempVacCompleted: String
 
     private val riskViewModel: RiskViewModel by viewModels{
         RiskViewModelFactory((application as RiskApplication).repository)
@@ -84,6 +87,9 @@ class FourthActivity : AppCompatActivity(){
                 tempDuration = it.duration
                 tempMasks = it.masks
                 tempVaccinated = it.vaccinated
+                tempLocationRatio = it.locationRatio
+                tempCases = it.cases
+                tempVacCompleted = it.vacCompleted
 
             }
         })
@@ -97,6 +103,9 @@ class FourthActivity : AppCompatActivity(){
             intent.putExtra("duration", tempDuration)
             intent.putExtra("masks", tempMasks)
             intent.putExtra("vaccinated", tempVaccinated)
+            intent.putExtra("locationRatio", tempLocationRatio)
+            intent.putExtra("cases", tempCases)
+            intent.putExtra("vacCompleted", tempVacCompleted)
             startActivity(intent)
         }
     }

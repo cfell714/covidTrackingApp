@@ -18,8 +18,8 @@ class RiskRepository (private val riskDao: RiskDAO) {
         return riskDao.select(id)
     }
 
-    suspend fun update(id:Int, location:String, location_state:String, number_people:String, duration:String, masks:String, vaccinated:String){
-        riskDao.update(id, location, location_state, number_people, duration, masks, vaccinated)
+    suspend fun update(id:Int, location:String, location_state:String, number_people:String, duration:String, masks:String, vaccinated:String, locationRatio:String, cases:String, vacCompleted:String){
+        riskDao.update(id, location, location_state, number_people, duration, masks, vaccinated, locationRatio, cases, vacCompleted)
     }
 
 }

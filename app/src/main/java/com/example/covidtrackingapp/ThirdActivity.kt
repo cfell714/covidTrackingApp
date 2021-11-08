@@ -30,8 +30,7 @@ class ThirdActivity : AppCompatActivity() {
         RiskViewModelFactory((application as RiskApplication).repository)
     }
 
-   // private final val baseUrl = "https://api.covidactnow.org/v2/state/"
-   private lateinit var client: AsyncHttpClient //? = AsyncHttpClient()
+   private lateinit var client: AsyncHttpClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,25 +59,40 @@ class ThirdActivity : AppCompatActivity() {
                         check_temp = true
                     }
 
-                    val apiUrl =
-                        "https://api.covidactnow.org/v2/state/CA.json?apiKey=4eb311892e484892a0fd50aa90df2b47"
-                    println("CHELSEA line 64")
+                    val apiUrl = "https://api.covidactnow.org/v2/state/CA.json?apiKey=4eb311892e484892a0fd50aa90df2b47"
 
                     var client2 = AsyncHttpClient()
                     client2.addHeader("Accept", "application/json")
-                    println("CHELSEA 67")
                     client2.get(apiUrl, object : AsyncHttpResponseHandler() {
                         override fun onSuccess(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray) {
                             try {
-                                println("CHELSEA line 70")
-
                                 val result = String(responseBody)
                                 val json = JSONObject(result)
-                                println("CHELSEA line 72")
-                                val stateNumber = json.getString("fips")
-                                println(json.toString())
+
+                                val metrics = json.getJSONObject("metrics")
+                                val testPosRatio = metrics.getString("testPositivityRatio")
+                                val infectionRate = metrics.getString("caseDensity")
+                                val vaccinationsCompletedRatio = metrics.getString("vaccinationsCompletedRatio")
+
                                 println("CHELSEA line 74")
-                                println("${stateNumber} THIS IS WHAT IM PRINTGI")
+                                println("${testPosRatio} THIS IS WHAT IM PRINTGI")
+                                println("${infectionRate} THIS IS WHAT IM PRINTGI")
+                                println("${vaccinationsCompletedRatio} THIS IS WHAT IM PRINTGI")
+
+                                val risk_temp = Risk(
+                                        0,
+                                        spinner.selectedItem.toString(),
+                                        editTextState.text.toString(),
+                                        editTextNumberPeople.text.toString(),
+                                        editTextDuration.text.toString(),
+                                        check_temp.toString(),
+                                        editTextVaccinated.text.toString(),
+                                        testPosRatio,
+                                        infectionRate,
+                                        vaccinationsCompletedRatio
+                                )
+                                riskViewModel.insert(risk_temp)
+                                finish()
 
                             } catch (e: JSONException) {
                                 e.printStackTrace()
@@ -91,6 +105,7 @@ class ThirdActivity : AppCompatActivity() {
                         }
 
                     })
+                    /*
 
                     val risk_temp = Risk(
                         0,
@@ -103,6 +118,8 @@ class ThirdActivity : AppCompatActivity() {
                     )
                     riskViewModel.insert(risk_temp)
                     finish()
+
+                     */
 
                 } catch (e: Exception) {
                     Toast.makeText(this, "Something is wrong", Toast.LENGTH_LONG).show()

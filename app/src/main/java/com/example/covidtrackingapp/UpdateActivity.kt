@@ -43,6 +43,9 @@ class UpdateActivity : AppCompatActivity() {
         val tempDuration = intent.getStringExtra("duration")
         val tempMasks = intent.getStringExtra("masks")
         val tempVaccinated = intent.getStringExtra("vaccinated")
+        val locationRatio = intent.getStringExtra("locationRatio")
+        val cases = intent.getStringExtra("cases")
+        val vacCompleted = intent.getStringExtra("vacCompleted")
 
         editTextState.setText(tempState)
         editTextNumberPeople.setText(tempNumberPeople)
@@ -62,7 +65,7 @@ class UpdateActivity : AppCompatActivity() {
                         check_temp = true
                     }
                     riskViewModel.update(id, spinner.selectedItem.toString(), editTextState.text.toString(), editTextNumberPeople.text.toString(),
-                            editTextDuration.text.toString(), check_temp.toString(), editTextVaccinated.text.toString())
+                            editTextDuration.text.toString(), check_temp.toString(), editTextVaccinated.text.toString(), locationRatio.toString(), cases.toString(), vacCompleted.toString())
                     val intent = Intent(this, SecondActivity::class.java)
                     startActivity(intent)
 
