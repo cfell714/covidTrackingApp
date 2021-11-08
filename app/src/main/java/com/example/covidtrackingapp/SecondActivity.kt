@@ -12,6 +12,7 @@ class SecondActivity : AppCompatActivity(){
 
     private lateinit var recyclerview: RecyclerView
     private lateinit var buttonLogEntry: Button
+    private lateinit var buttonCalcRisk: Button
 
     private val riskViewModel:RiskViewModel by viewModels{
         RiskViewModelFactory((application as RiskApplication).repository)
@@ -23,6 +24,7 @@ class SecondActivity : AppCompatActivity(){
 
         recyclerview = findViewById(R.id.recyclerview)
         buttonLogEntry = findViewById(R.id.button_logEntry)
+        buttonCalcRisk = findViewById(R.id.button_risk)
 
         val adapter = RiskListAdapter()
         recyclerview.adapter = adapter
@@ -38,10 +40,19 @@ class SecondActivity : AppCompatActivity(){
             launchThirdActivity()
         }
 
+        buttonCalcRisk.setOnClickListener{
+            launchFifthActivity()
+        }
+
     }
 
     private fun launchThirdActivity(){
         val intent = Intent(this, ThirdActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun launchFifthActivity(){
+        val intent = Intent(this, FifthActivity::class.java)
         startActivity(intent)
     }
 

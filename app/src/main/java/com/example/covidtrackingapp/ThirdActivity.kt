@@ -64,7 +64,6 @@ class ThirdActivity : AppCompatActivity() {
                         "https://api.covidactnow.org/v2/state/CA.json?apiKey=4eb311892e484892a0fd50aa90df2b47"
                     println("CHELSEA line 64")
 
-              //      client.addHeader("Accept", "application/json")
                     var client2 = AsyncHttpClient()
                     client2.addHeader("Accept", "application/json")
                     println("CHELSEA 67")
@@ -72,12 +71,7 @@ class ThirdActivity : AppCompatActivity() {
                         override fun onSuccess(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray) {
                             try {
                                 println("CHELSEA line 70")
-                               // val charset = Charsets.UTF_8
-                              // val stringResponse = responseBody?.let { it1 -> String(it1, charset) }
-                            //    val stringResponse2 = responseBody.toString()
-                        //        println("this is me printing ${stringResponse2}")
-                            //    val jsonObj: JSONObject = JSONObject(stringResponse2)
-                                //val body = responseBody.toString()
+
                                 val result = String(responseBody)
                                 val json = JSONObject(result)
                                 println("CHELSEA line 72")

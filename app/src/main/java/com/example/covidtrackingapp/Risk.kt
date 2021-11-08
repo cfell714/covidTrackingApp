@@ -12,3 +12,6 @@ class Risk(@PrimaryKey(autoGenerate = true) val id:Int,
            @ColumnInfo(name="duration") val duration:String,
            @ColumnInfo(name="masks") val masks:String,
            @ColumnInfo(name="vaccinated") val vaccinated:String)
+        // @ColumnInfo(name="location_locationPosRatio") val locationRatio:String,
+        // @ColumnInfo(name="location_stateCases") val cases:String,
+        // @ColumnInfo(name="vaccinations_completedRatio") val vacCompleted:String)

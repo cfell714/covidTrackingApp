@@ -94,7 +94,7 @@
                 android:id="@+id/textView_fourthVaccinated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Vaccinated?"
+                android:text="Are you vaccinated?"
                 android:textSize="18sp" />
 
             <TextView

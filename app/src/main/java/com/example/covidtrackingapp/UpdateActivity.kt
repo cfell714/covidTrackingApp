@@ -70,9 +70,7 @@ class UpdateActivity : AppCompatActivity() {
                     Toast.makeText(this, "Something is wrong", Toast.LENGTH_LONG).show()
                 }
             }
-
         }
-
     }
 
     private fun SearchSpinner(){
@@ -80,5 +78,4 @@ class UpdateActivity : AppCompatActivity() {
         searchMethod.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner!!.adapter = searchMethod
     }
-
 }
