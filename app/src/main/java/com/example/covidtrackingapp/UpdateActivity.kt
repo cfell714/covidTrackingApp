@@ -15,7 +15,15 @@ class UpdateActivity : AppCompatActivity() {
     private lateinit var editTextNumberPeople: EditText
     private lateinit var editTextDuration: EditText
     private lateinit var checkBoxMasks: CheckBox
+    private lateinit var checkBoxMasks1: CheckBox
+    private lateinit var checkBoxMasks2: CheckBox
+    private lateinit var checkBoxMasks3: CheckBox
     private lateinit var editTextVaccinated: EditText
+    private lateinit var textViewSelectLocation: TextView
+    private lateinit var textViewNumPeople: TextView
+    private lateinit var textViewDuration: TextView
+    private lateinit var textViewMasks: TextView
+    private lateinit var textViewVacStatus: TextView
     var spinner_temp = arrayOf("bar", "club", "library", "dinner")
 
     private val riskViewModel: RiskViewModel by viewModels{
@@ -32,7 +40,15 @@ class UpdateActivity : AppCompatActivity() {
         editTextNumberPeople = findViewById(R.id.editText_numberPeople)
         editTextDuration = findViewById(R.id.editText_duration)
         checkBoxMasks = findViewById(R.id.checkBox_masks)
+        checkBoxMasks1 = findViewById(R.id.checkBox_masks1)
+        checkBoxMasks2= findViewById(R.id.checkBox_masks2)
+        checkBoxMasks3 = findViewById(R.id.checkBox_masks3)
         editTextVaccinated = findViewById(R.id.editText_vaccinated)
+        textViewSelectLocation = findViewById(R.id.textView_selectLocation)
+        textViewNumPeople = findViewById(R.id.textView_numPeople)
+        textViewDuration = findViewById(R.id.textView_duration)
+        textViewMasks = findViewById(R.id.textView_masks)
+        textViewVacStatus = findViewById(R.id.textView_vacStatus)
 
         val tempId = intent.getStringExtra("id")
         val id = Integer.parseInt(tempId)
@@ -53,6 +69,19 @@ class UpdateActivity : AppCompatActivity() {
         editTextVaccinated.setText(tempVaccinated)
         spinner.setSelection(1)
 
+        if(tempMasks == "zero"){
+            checkBoxMasks.setChecked(true)
+        }
+        if(tempMasks == "one"){
+            checkBoxMasks1.setChecked(true)
+        }
+        if(tempMasks == "two"){
+            checkBoxMasks2.setChecked(true)
+        }
+        if(tempMasks == "three"){
+            checkBoxMasks3.setChecked(true)
+        }
+
         SearchSpinner()
 
         buttonSave.setOnClickListener {
@@ -60,12 +89,36 @@ class UpdateActivity : AppCompatActivity() {
                 Toast.makeText(this, "Section Missing", Toast.LENGTH_LONG).show()
             }else{
                 try {
-                    var check_temp = false
-                    if(checkBoxMasks.isChecked){
-                        check_temp = true
+                    var check_temp0 = false
+                    if (checkBoxMasks.isChecked) {
+                        check_temp0 = true
                     }
+                    var check_temp1 = false
+                    if (checkBoxMasks1.isChecked) {
+                        check_temp1 = true
+                    }
+                    var check_temp2 = false
+                    if (checkBoxMasks2.isChecked) {
+                        check_temp2 = true
+                    }
+                    var check_temp3 = false
+                    if (checkBoxMasks3.isChecked) {
+                        check_temp3 = true
+                    }
+
+                    var check = "string"
+                    if(check_temp0 == true){
+                        check = "zero"
+                    } else if (check_temp1 == true){
+                        check = "one"
+                    } else if (check_temp2 == true){
+                        check = "two"
+                    } else if (check_temp3 == true){
+                        check = "three"
+                    }
+
                     riskViewModel.update(id, spinner.selectedItem.toString(), editTextState.text.toString(), editTextNumberPeople.text.toString(),
-                            editTextDuration.text.toString(), check_temp.toString(), editTextVaccinated.text.toString(), locationRatio.toString(), cases.toString(), vacCompleted.toString())
+                            editTextDuration.text.toString(), check, editTextVaccinated.text.toString(), locationRatio.toString(), cases.toString(), vacCompleted.toString())
                     val intent = Intent(this, SecondActivity::class.java)
                     startActivity(intent)
 

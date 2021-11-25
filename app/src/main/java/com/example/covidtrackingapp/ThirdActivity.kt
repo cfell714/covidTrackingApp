@@ -23,7 +23,15 @@ class ThirdActivity : AppCompatActivity() {
     private lateinit var editTextNumberPeople: EditText
     private lateinit var editTextDuration: EditText
     private lateinit var checkBoxMasks: CheckBox
+    private lateinit var checkBoxMasks1: CheckBox
+    private lateinit var checkBoxMasks2: CheckBox
+    private lateinit var checkBoxMasks3: CheckBox
     private lateinit var editTextVaccinated: EditText
+    private lateinit var textViewSelectLocation: TextView
+    private lateinit var textViewNumPeople: TextView
+    private lateinit var textViewDuration: TextView
+    private lateinit var textViewMasks: TextView
+    private lateinit var textViewVacStatus: TextView
     var spinner_temp = arrayOf("bar", "club", "library", "dinner")
 
     private val riskViewModel: RiskViewModel by viewModels{
@@ -42,7 +50,15 @@ class ThirdActivity : AppCompatActivity() {
         editTextNumberPeople = findViewById(R.id.editText_numberPeople)
         editTextDuration = findViewById(R.id.editText_duration)
         checkBoxMasks = findViewById(R.id.checkBox_masks)
+        checkBoxMasks1 = findViewById(R.id.checkBox_masks1)
+        checkBoxMasks2= findViewById(R.id.checkBox_masks2)
+        checkBoxMasks3 = findViewById(R.id.checkBox_masks3)
         editTextVaccinated = findViewById(R.id.editText_vaccinated)
+        textViewSelectLocation = findViewById(R.id.textView_selectLocation)
+        textViewNumPeople = findViewById(R.id.textView_numPeople)
+        textViewDuration = findViewById(R.id.textView_duration)
+        textViewMasks = findViewById(R.id.textView_masks)
+        textViewVacStatus = findViewById(R.id.textView_vacStatus)
 
         SearchSpinner()
 
@@ -54,9 +70,21 @@ class ThirdActivity : AppCompatActivity() {
                 Toast.makeText(this, "Section Missing", Toast.LENGTH_LONG).show()
             } else {
                 try {
-                    var check_temp = false
+                    var check_temp0 = false
                     if (checkBoxMasks.isChecked) {
-                        check_temp = true
+                        check_temp0 = true
+                    }
+                    var check_temp1 = false
+                    if (checkBoxMasks1.isChecked) {
+                        check_temp1 = true
+                    }
+                    var check_temp2 = false
+                    if (checkBoxMasks2.isChecked) {
+                        check_temp2 = true
+                    }
+                    var check_temp3 = false
+                    if (checkBoxMasks3.isChecked) {
+                        check_temp3 = true
                     }
 
                     val apiUrl = "https://api.covidactnow.org/v2/state/CA.json?apiKey=4eb311892e484892a0fd50aa90df2b47"
@@ -78,6 +106,16 @@ class ThirdActivity : AppCompatActivity() {
                                 println("${testPosRatio} THIS IS WHAT IM PRINTGI")
                                 println("${infectionRate} THIS IS WHAT IM PRINTGI")
                                 println("${vaccinationsCompletedRatio} THIS IS WHAT IM PRINTGI")
+                                var check = "string"
+                                if(check_temp0 == true){
+                                    check = "zero"
+                                } else if (check_temp1 == true){
+                                    check = "one"
+                                } else if (check_temp2 == true){
+                                    check = "two"
+                                } else if (check_temp3 == true){
+                                    check = "three"
+                                }
 
                                 val risk_temp = Risk(
                                         0,
@@ -85,7 +123,7 @@ class ThirdActivity : AppCompatActivity() {
                                         editTextState.text.toString(),
                                         editTextNumberPeople.text.toString(),
                                         editTextDuration.text.toString(),
-                                        check_temp.toString(),
+                                        check,
                                         editTextVaccinated.text.toString(),
                                         testPosRatio,
                                         infectionRate,
