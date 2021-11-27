@@ -14,9 +14,9 @@ class Risk(@PrimaryKey(autoGenerate = true) val id:Int,
            @ColumnInfo(name="duration") val duration:String,
            @ColumnInfo(name="masks") val masks:String,
            @ColumnInfo(name="vaccinated") val vaccinated:String,
-           @ColumnInfo(name="locationRatio") val locationRatio:String,
-           @ColumnInfo(name="cases") val cases:String,
-           @ColumnInfo(name="vacCompleted") val vacCompleted:String)
+           @ColumnInfo(name="locationRatio") val locationRatio:String, // pulled from api and is the test positivity ratio
+           @ColumnInfo(name="cases") val cases:String, // pulled from api and the infection rate
+           @ColumnInfo(name="vacCompleted") val vacCompleted:String) // pulled from api and is the #vaccinations completed
           // @ColumnInfo generates a new column in database
           // some of these are not visible to the user
           // can see everything inside the database under the Database Inspector when the emulator is actively running

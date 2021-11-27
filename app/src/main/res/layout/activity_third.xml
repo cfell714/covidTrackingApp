@@ -58,7 +58,7 @@
                 android:id="@+id/textView_numPeople"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Please enter the estimated number of people with:"
+                android:text="Please enter the estimated number of people at location:"
                 android:textColor="#000000"
                 android:textSize="18sp" />
 

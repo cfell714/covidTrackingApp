@@ -143,21 +143,6 @@ class ThirdActivity : AppCompatActivity() {
                         }
 
                     })
-                    /*
-
-                    val risk_temp = Risk(
-                        0,
-                        spinner.selectedItem.toString(),
-                        editTextState.text.toString(),
-                        editTextNumberPeople.text.toString(),
-                        editTextDuration.text.toString(),
-                        check_temp.toString(),
-                        editTextVaccinated.text.toString()
-                    )
-                    riskViewModel.insert(risk_temp)
-                    finish()
-
-                     */
 
                 } catch (e: Exception) {
                     Toast.makeText(this, "Something is wrong", Toast.LENGTH_LONG).show()
