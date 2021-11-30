@@ -71,15 +71,15 @@ class SecondActivity : AppCompatActivity(){
                         var location_state_count = 75.0f
                         var location_vacComp = it.vacCompleted.toFloat() // vaccinations completed
                         var location_posRatio = it.locationRatio.toFloat() // positivity ratio
-                        var location_infectionRate = it.cases.toFloat() // infection rate
+                     //   var location_infectionRate = it.cases.toFloat() // infection rate
 
                         println("CHELSEA DOING TESTING HERE ")
                         println(location_vacComp * 75.0f)
                         println("pos rati" + location_posRatio)
-                        println("inf rat" + location_infectionRate)
+                    //    println("inf rat" + location_infectionRate)
 
                         var location_tot = (location_vacComp * 75.0f + location_posRatio
-                                * 75.0f + location_infectionRate * 75.0f) / 3.0f
+                                * 75.0f) / 2.0f// + location_infectionRate * 75.0f) / 3.0f
                         println("location_state: " + location_state)
                         println("location_tot: " + location_tot)
 
@@ -118,12 +118,20 @@ class SecondActivity : AppCompatActivity(){
                         println("vaccinated: " + vaccinated)
                         println("vaccinated count: " + vaccinated_count)
 
-                        var finalProbability = location_count + location_tot + numPeople_final
-                        + duration_final + masks_count + vaccinated_count
+                        // calculating final probability
+                        var finalProbability = location_count + location_tot //+ numPeople_final
+                      //  + duration_final + masks_count + vaccinated_count
+                        finalProbability += numPeople_final + duration_final
+                        finalProbability += masks_count + vaccinated_count
                         println("Final Probability: " + finalProbability)
 
                         intentArray.add(finalProbability.toString())
                         println("Intent Array: " + intentArray)
+
+                        val intent = Intent(this, FifthActivity::class.java)
+                        // sending intent as a string form since floats are being funky
+                        intent.putStringArrayListExtra("intent", intentArray)
+                        startActivity(intent)
 
 
                     }
@@ -132,10 +140,13 @@ class SecondActivity : AppCompatActivity(){
                 println("CHELSEA: not sure what happened here")
             }
         }
+        /*
         val intent = Intent(this, FifthActivity::class.java)
         // sending intent as a string form since floats are being funky
         intent.putStringArrayListExtra("intent", intentArray)
         startActivity(intent)
+
+         */
 
     }
 

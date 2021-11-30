@@ -10,6 +10,7 @@ class FifthActivity : AppCompatActivity() {
 
     // defining variables
     private lateinit var textViewFifth: TextView
+    private lateinit var textViewFifthCalcDis: TextView
     private lateinit var buttonFifth: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,12 +19,35 @@ class FifthActivity : AppCompatActivity() {
 
         // looking up variables by ids
         textViewFifth = findViewById(R.id.textView_fifth)
+        textViewFifthCalcDis = findViewById(R.id.textView_fifrthCalcDis)
         buttonFifth = findViewById(R.id.button_fifth)
+        val intent = intent.getStringArrayListExtra("intent")
+        println("intent" + intent)
+        var length = intent?.size
+        var i = 0
+        var x = 0.0f
+        if (length != null) {
+            while (i < length) {
+                if (intent != null) {
+                    intent.get(i)
+                    println("printing" + i)
+                    println(intent.get(i))
+                    x += intent.get(i).toFloat()
+                 //   x.plus(intent.get(i))
+                    i ++
+                }
 
-        // launches to second activity function after click
-        buttonFifth.setOnClickListener{
-            launchSecondActivity()
+            }
         }
+        println(x)
+        x = x/(length!!)
+        println("THIS IS X " + x)
+        textViewFifthCalcDis.setText(x.toString())
+
+            // launches to second activity function after click
+                buttonFifth.setOnClickListener{
+                    launchSecondActivity()
+                }
 
     }
      // launches to second activity with an empty intent
