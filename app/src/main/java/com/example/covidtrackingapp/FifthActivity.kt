@@ -21,6 +21,7 @@ class FifthActivity : AppCompatActivity() {
         textViewFifth = findViewById(R.id.textView_fifth)
         textViewFifthCalcDis = findViewById(R.id.textView_fifrthCalcDis)
         buttonFifth = findViewById(R.id.button_fifth)
+
         val intent = intent.getStringArrayListExtra("intent")
         println("intent" + intent)
         var length = intent?.size

@@ -24,7 +24,7 @@ class UpdateActivity : AppCompatActivity() {
     private lateinit var textViewDuration: TextView
     private lateinit var textViewMasks: TextView
     private lateinit var textViewVacStatus: TextView
-    var spinner_temp = arrayOf("bar", "club", "library", "dinner")
+    var spinner_temp = arrayOf("outside - social distancing", "outside - no social distancing", "inside - social distancing", "inside - no social distancing")
 
     private val riskViewModel: RiskViewModel by viewModels{
         RiskViewModelFactory((application as RiskApplication).repository)
@@ -53,6 +53,7 @@ class UpdateActivity : AppCompatActivity() {
         val tempId = intent.getStringExtra("id")
         val id = Integer.parseInt(tempId)
 
+        // getting the information out of the intent sent
         val tempLocation = intent.getStringExtra("location")
         val tempState = intent.getStringExtra("state")
         val tempNumberPeople = intent.getStringExtra("numberPeople")
@@ -69,42 +70,37 @@ class UpdateActivity : AppCompatActivity() {
         editTextVaccinated.setText(tempVaccinated)
         spinner.setSelection(1)
 
-        if(tempMasks == "zero"){
-            checkBoxMasks.setChecked(true)
-        }
-        if(tempMasks == "one"){
-            checkBoxMasks1.setChecked(true)
-        }
-        if(tempMasks == "two"){
-            checkBoxMasks2.setChecked(true)
-        }
-        if(tempMasks == "three"){
-            checkBoxMasks3.setChecked(true)
-        }
+        // taking intnent and setting spinner to the user selection
+        if(tempLocation == "outside - social distancing"){spinner.setSelection(1)}
+        if(tempLocation == "outside - no social distancing"){spinner.setSelection(2)}
+        if(tempLocation == "inside - social distancing"){spinner.setSelection(3)}
+        if(tempLocation == "inside - no social distancing"){spinner.setSelection(4)}
+
+        // checking the same box the user checked before
+        if(tempMasks == "zero"){ checkBoxMasks.setChecked(true) }
+        if(tempMasks == "one"){ checkBoxMasks1.setChecked(true) }
+        if(tempMasks == "two"){ checkBoxMasks2.setChecked(true) }
+        if(tempMasks == "three"){ checkBoxMasks3.setChecked(true) }
 
         SearchSpinner()
 
+        // button save function to save the new updated information to the database in the same id as before
         buttonSave.setOnClickListener {
             if(TextUtils.isEmpty(editTextState.text) || TextUtils.isEmpty(editTextNumberPeople.text) || TextUtils.isEmpty(editTextDuration.text) || spinner.selectedItem == "" || TextUtils.isEmpty(editTextVaccinated.text)){
                 Toast.makeText(this, "Section Missing", Toast.LENGTH_LONG).show()
             }else{
                 try {
                     var check_temp0 = false
-                    if (checkBoxMasks.isChecked) {
-                        check_temp0 = true
-                    }
+                    if (checkBoxMasks.isChecked) { check_temp0 = true }
+
                     var check_temp1 = false
-                    if (checkBoxMasks1.isChecked) {
-                        check_temp1 = true
-                    }
+                    if (checkBoxMasks1.isChecked) { check_temp1 = true }
+
                     var check_temp2 = false
-                    if (checkBoxMasks2.isChecked) {
-                        check_temp2 = true
-                    }
+                    if (checkBoxMasks2.isChecked) { check_temp2 = true }
+
                     var check_temp3 = false
-                    if (checkBoxMasks3.isChecked) {
-                        check_temp3 = true
-                    }
+                    if (checkBoxMasks3.isChecked) { check_temp3 = true }
 
                     var check = "string"
                     if(check_temp0 == true){
@@ -117,6 +113,7 @@ class UpdateActivity : AppCompatActivity() {
                         check = "three"
                     }
 
+                    // this is where the database is being updated and new intent is being send the user back to the second activity
                     riskViewModel.update(id, spinner.selectedItem.toString(), editTextState.text.toString(), editTextNumberPeople.text.toString(),
                             editTextDuration.text.toString(), check, editTextVaccinated.text.toString(), locationRatio.toString(), cases.toString(), vacCompleted.toString())
                     val intent = Intent(this, SecondActivity::class.java)

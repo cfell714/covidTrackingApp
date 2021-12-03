@@ -62,7 +62,10 @@ class SecondActivity : AppCompatActivity(){
                         // getting information from location / determining risk depending on specific location information
                         var location = it.location
                         var location_count = 75.0f
-                        if(location == "bar"){location_count = 65.0f}
+                        if(location == "outside - social distancing"){location_count = 20.0f}
+                        if(location == "outside - no social distancing"){location_count = 35.0f}
+                        if(location == "inside - social distancing"){location_count = 50.0f}
+                        if(location == "inside - no social distancing"){location_count = 75.0f}
                         println("location: " + location + "chelsea")
                         println("location count: " + location_count)
 

@@ -17,6 +17,7 @@ import org.json.JSONObject
 
 class ThirdActivity : AppCompatActivity() {
 
+    // defining variables in activity
     private lateinit var spinner: Spinner
     private lateinit var buttonSave: Button
     private lateinit var editTextState: EditText
@@ -32,7 +33,7 @@ class ThirdActivity : AppCompatActivity() {
     private lateinit var textViewDuration: TextView
     private lateinit var textViewMasks: TextView
     private lateinit var textViewVacStatus: TextView
-    var spinner_temp = arrayOf("bar", "club", "library", "dinner")
+    var spinner_temp = arrayOf("outside - social distancing", "outside - no social distancing", "inside - social distancing", "inside - no social distancing")
 
     private val riskViewModel: RiskViewModel by viewModels{
         RiskViewModelFactory((application as RiskApplication).repository)
@@ -107,14 +108,22 @@ class ThirdActivity : AppCompatActivity() {
                                 println("${infectionRate} THIS IS WHAT IM PRINTGI")
                                 println("${vaccinationsCompletedRatio} THIS IS WHAT IM PRINTGI")
                                 var check = "string"
+                                var x = 0
                                 if(check_temp0 == true){
                                     check = "zero"
-                                } else if (check_temp1 == true){
+                                    x++
+                                }
+                                if (check_temp1 == true){
                                     check = "one"
-                                } else if (check_temp2 == true){
+                                    x++
+                                }
+                                if (check_temp2 == true){
                                     check = "two"
-                                } else if (check_temp3 == true){
+                                    x++
+                                }
+                                if (check_temp3 == true){
                                     check = "three"
+                                    x++
                                 }
 
                                 val risk_temp = Risk(
@@ -129,26 +138,29 @@ class ThirdActivity : AppCompatActivity() {
                                         infectionRate,
                                         vaccinationsCompletedRatio
                                 )
-                                riskViewModel.insert(risk_temp)
-                                finish()
+
+                                if(x >=2){
+                                    Toast.makeText(this@ThirdActivity, "Please only check one box", Toast.LENGTH_LONG).show()
+                                    println("Please only check one box")
+                                }else {
+                                    riskViewModel.insert(risk_temp)
+                                    finish()
+                                }
 
                             } catch (e: JSONException) {
                                 e.printStackTrace()
                             }
-
                         }
 
                         override fun onFailure(statusCode: Int, headers: Array<out Header>?, responseBody: ByteArray?, error: Throwable?) {
                             println("not working idk why")
                         }
-
                     })
 
                 } catch (e: Exception) {
                     Toast.makeText(this, "Something is wrong", Toast.LENGTH_LONG).show()
                 }
             }
-
         }
     }
 
