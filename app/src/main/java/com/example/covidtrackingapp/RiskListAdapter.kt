@@ -17,8 +17,8 @@ class RiskListAdapter : ListAdapter<Risk, RiskListAdapter.RiskViewHolder>(RiskCo
 
     override fun onBindViewHolder(holder: RiskViewHolder, position: Int) {
         val currentRisk = getItem(position)
-        holder.bindText(currentRisk.location, holder.riskTextView)
-        holder.bindText(currentRisk.id.toString(), holder.idTextView)
+        holder.bindText(currentRisk.location, holder.idTextView)
+        holder.bindText(currentRisk.id.toString(), holder.riskTextView)
 
         holder.itemView.setOnClickListener{
             v:View -> Unit

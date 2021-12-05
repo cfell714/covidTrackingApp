@@ -139,12 +139,21 @@ class ThirdActivity : AppCompatActivity() {
                                         vaccinationsCompletedRatio
                                 )
 
+                                // this section is about user proofing the app so their entries match what I need in other activities
                                 if(x >=2){
                                     Toast.makeText(this@ThirdActivity, "Please only check one box", Toast.LENGTH_LONG).show()
                                     println("Please only check one box")
-                                }else {
-                                    riskViewModel.insert(risk_temp)
-                                    finish()
+                                } else {
+                                    if (editTextVaccinated.text.toString() == "yes" || editTextVaccinated.text.toString() == "no") {
+                                        println("vaccination status entered is good")
+                                        riskViewModel.insert(risk_temp)
+                                        finish()
+                                    } else{
+                                        Toast.makeText(this@ThirdActivity, "Enter yes or no for vaccination status", Toast.LENGTH_LONG).show()
+                                        println("Enter yes or no for vaccination status")
+                                    }
+                                   // riskViewModel.insert(risk_temp)
+                                    //finish()
                                 }
 
                             } catch (e: JSONException) {

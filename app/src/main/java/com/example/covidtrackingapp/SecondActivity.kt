@@ -59,6 +59,15 @@ class SecondActivity : AppCompatActivity(){
             try {
                 riskViewModel.select(i).observe(this, Observer {
                     if (it != null) {
+
+                        // adding section here where if entry is not the first / the more entries there are
+                        // the higher the risk, allocated 50 points to increasing number of events
+                        var newEvent = 50.0f
+                        if(i >= 2){ newEvent = 10.0f }
+                        if(i >=4){ newEvent = 20.0f }
+                        if(i >=6){ newEvent = 30.0f }
+                        if(i >= 8){ newEvent = 50.0f }
+
                         // getting information from location / determining risk depending on specific location information
                         var location = it.location
                         var location_count = 75.0f
@@ -97,8 +106,8 @@ class SecondActivity : AppCompatActivity(){
 
                         // getting information on duration of time
                         var duration = it.duration.toFloat()
-                        var duration_final = 175.0f
-                        if(duration <= 60.0f){duration_final = 100.0f}
+                        var duration_final = 125.0f
+                        if(duration <= 60.0f){duration_final = 80.0f}
                         if(duration <= 15.0f){duration_final = 50.0f}
                         println("duration: " + duration)
                         println("duration_final: " + duration_final)
@@ -122,10 +131,10 @@ class SecondActivity : AppCompatActivity(){
                         println("vaccinated count: " + vaccinated_count)
 
                         // calculating final probability
-                        var finalProbability = location_count + location_tot //+ numPeople_final
-                      //  + duration_final + masks_count + vaccinated_count
+                        var finalProbability = location_count + location_tot
                         finalProbability += numPeople_final + duration_final
                         finalProbability += masks_count + vaccinated_count
+                        finalProbability += newEvent
                         println("Final Probability: " + finalProbability)
 
                         intentArray.add(finalProbability.toString())

@@ -77,7 +77,10 @@ class FourthActivity : AppCompatActivity(){
                 textViewFourState.text = it.location_state
                 textViewFourNumberPeople.text = it.number_people
                 textViewFourDuration.text = it.duration
-                textViewFourMasks.text = it.masks
+                if(it.masks == "zero") { textViewFourMasks.text = "Masks worn by everyone" }
+                if(it.masks == "one") { textViewFourMasks.text = "Masks worn by most people" }
+                if(it.masks == "two") { textViewFourMasks.text = "Masks worn by a few people" }
+                if(it.masks == "three") { textViewFourMasks.text = "No masks worn" }
                 textViewFourVaccinated.text = it.vaccinated
 
                 tempId = it.id.toString()

@@ -14,7 +14,7 @@
         android:layout_marginEnd="2dp"
         android:layout_marginRight="2dp"
         android:gravity="center"
-        android:text="WELCOME TO THE COVID APP! CLICK TO CONTINUE"
+        android:text="Welcome to the risk assessment app! Before entering this application, please note this a subjective calculation of risk. It is not a calculation of how likely you are to die, it is your risk and probability of contracting covid."
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/button_main"
         app:layout_constraintEnd_toEndOf="parent"

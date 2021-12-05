@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter state"
+                android:hint='Enter state (ex. "California")'
                 android:inputType="textPersonName" />
 
             <TextView
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter number"
+                android:hint='Enter number (ex. "10")'
                 android:inputType="textPersonName" />
 
             <TextView
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter duration"
+                android:hint='Enter duration in minutes (ex. "85")'
                 android:inputType="textPersonName" />
 
             <TextView
@@ -131,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter yes or no"
+                android:hint='Enter "yes" or "no"'
                 android:inputType="textPersonName" />
         </LinearLayout>
     </ScrollView>
