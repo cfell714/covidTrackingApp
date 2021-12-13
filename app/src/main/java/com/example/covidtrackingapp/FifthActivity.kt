@@ -12,6 +12,7 @@ class FifthActivity : AppCompatActivity() {
     private lateinit var textViewFifth: TextView
     private lateinit var textViewFifthCalcDis: TextView
     private lateinit var buttonFifth: Button
+    private lateinit var buttonTesting: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +22,7 @@ class FifthActivity : AppCompatActivity() {
         textViewFifth = findViewById(R.id.textView_fifth)
         textViewFifthCalcDis = findViewById(R.id.textView_fifrthCalcDis)
         buttonFifth = findViewById(R.id.button_fifth)
+        buttonTesting = findViewById(R.id.button_testing)
 
         val intent = intent.getStringArrayListExtra("intent")
         println("intent" + intent)
@@ -49,11 +51,18 @@ class FifthActivity : AppCompatActivity() {
                 buttonFifth.setOnClickListener{
                     launchSecondActivity()
                 }
+        buttonTesting.setOnClickListener{
+            sixth()
+        }
 
     }
      // launches to second activity with an empty intent
     private fun launchSecondActivity(){
         val intent = Intent(this, SecondActivity::class.java)
+        startActivity(intent)
+    }
+    private fun sixth(){
+        val intent = Intent(this, SixthActivity::class.java)
         startActivity(intent)
     }
 

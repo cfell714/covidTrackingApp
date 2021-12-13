@@ -82,5 +82,17 @@ dependencies {
   //  implementation "androidx.core:core-ktx:+"
     implementation 'com.loopj.android:android-async-http:1.4.9'
 
+    // google play map
+   // implementation 'com.google.android.gms:play-services-location:17.0.0'
+
+  //  implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+
 
 }
