@@ -38,7 +38,6 @@ class FifthActivity : AppCompatActivity() {
                     println("printing" + i)
                     println(intent.get(i))
                     x += intent.get(i).toFloat()
-                 //   x.plus(intent.get(i))
                     i ++
                 }
 
@@ -48,6 +47,9 @@ class FifthActivity : AppCompatActivity() {
         x = x/(length!!)
         println("THIS IS X " + x)
         textViewFifthCalcDis.setText(x.toString())
+        if(x > 0){
+            textViewExplanation.setText("The number " + x + " means you are not risky! You do not go out and do very little to possibly contract covid-19")
+        }
         if(x>400){
             textViewExplanation.setText("The number " + x + " means you are at mild risk! You go out, but are very safe in your activities")
         }
@@ -55,10 +57,10 @@ class FifthActivity : AppCompatActivity() {
             textViewExplanation.setText("The number " + x + " means you are at moderate risk! When you go out, you are mostly safe in your activities")
         }
         if(x > 600){
-            textViewExplanation.setText("The number " + x + " means you are pretty risky! You go out and take fewer precautions")
+            textViewExplanation.setText("The number " + x + " means you are at pretty high risky! You go out and take fewer precautions")
         }
         if (x > 700){
-            textViewExplanation.setText("This number " + x +  " means you are very risky! You go out often and don't do much to stay safe at all")
+            textViewExplanation.setText("This number " + x +  " means you are incredibly risky! You go out often and don't do much to stay safe at all")
         }
 
             // launches to second activity function after click

@@ -146,8 +146,12 @@ class ThirdActivity : AppCompatActivity() {
                                 } else {
                                     if (editTextVaccinated.text.toString() == "yes" || editTextVaccinated.text.toString() == "no") {
                                         println("vaccination status entered is good")
-                                        riskViewModel.insert(risk_temp)
-                                        finish()
+                                        if(editTextDuration.text.contains(",") || editTextDuration.text.contains(".")){
+                                            Toast.makeText(this@ThirdActivity, "Enter duration without commas/periods", Toast.LENGTH_LONG).show()
+                                        }else {
+                                            riskViewModel.insert(risk_temp)
+                                            finish()
+                                        }
                                     } else{
                                         Toast.makeText(this@ThirdActivity, "Enter yes or no for vaccination status", Toast.LENGTH_LONG).show()
                                         println("Enter yes or no for vaccination status")
