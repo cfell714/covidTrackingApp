@@ -11,6 +11,7 @@ class FifthActivity : AppCompatActivity() {
     // defining variables
     private lateinit var textViewFifth: TextView
     private lateinit var textViewFifthCalcDis: TextView
+    private lateinit var textViewExplanation: TextView
     private lateinit var buttonFifth: Button
     private lateinit var buttonTesting: Button
 
@@ -21,6 +22,7 @@ class FifthActivity : AppCompatActivity() {
         // looking up variables by ids
         textViewFifth = findViewById(R.id.textView_fifth)
         textViewFifthCalcDis = findViewById(R.id.textView_fifrthCalcDis)
+        textViewExplanation = findViewById(R.id.textView_explanation)
         buttonFifth = findViewById(R.id.button_fifth)
         buttonTesting = findViewById(R.id.button_testing)
 
@@ -46,6 +48,18 @@ class FifthActivity : AppCompatActivity() {
         x = x/(length!!)
         println("THIS IS X " + x)
         textViewFifthCalcDis.setText(x.toString())
+        if(x>400){
+            textViewExplanation.setText("The number " + x + " means you are at mild risk! You go out, but are very safe in your activities")
+        }
+        if (x > 500){
+            textViewExplanation.setText("The number " + x + " means you are at moderate risk! When you go out, you are mostly safe in your activities")
+        }
+        if(x > 600){
+            textViewExplanation.setText("The number " + x + " means you are pretty risky! You go out and take fewer precautions")
+        }
+        if (x > 700){
+            textViewExplanation.setText("This number " + x +  " means you are very risky! You go out often and don't do much to stay safe at all")
+        }
 
             // launches to second activity function after click
                 buttonFifth.setOnClickListener{
